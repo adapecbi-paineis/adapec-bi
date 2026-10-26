@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painéis de Dados · ADAPEC</title>
+  <meta name="description" content="Portal de painéis de dados do Power BI da ADAPEC — Agência de Defesa Agropecuária do Tocantins.">
+  <link rel="icon" href="assets/logo-adapec.jpeg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <noscript>
+    <p class="noscript">Este portal precisa de JavaScript ativado para funcionar.</p>
+  </noscript>
+
+  <!-- ===================== TELA 1: LOGIN ===================== -->
+  <div id="tela-login" class="login" hidden>
+
+    <section class="login__marca">
+      <div class="marca">
+        <div class="marca__logo">
+          <img data-logo alt="ADAPEC — Agência de Defesa Agropecuária do Tocantins">
+        </div>
+        <h1 class="marca__titulo">Painéis de <span class="marca__destaque">dados</span> da ADAPEC</h1>
+        <p class="marca__apoio">
+          Os dashboards da Agência de Defesa Agropecuária do Tocantins reunidos em um só lugar.
+        </p>
+      </div>
+    </section>
+
+    <section class="login__acesso">
+      <form id="form-login" class="acesso" novalidate>
+        <h2 class="acesso__titulo">Entrar</h2>
+        <p class="acesso__apoio">Informe seu usuário e senha para acessar os painéis.</p>
+
+        <div class="campo">
+          <label for="usuario">Usuário</label>
+          <input id="usuario" name="usuario" type="text" autocomplete="username"
+                 autocapitalize="none" autocorrect="off" spellcheck="false" required>
+        </div>
+
+        <div class="campo">
+          <label for="senha">Senha</label>
+          <input id="senha" name="senha" type="password" autocomplete="current-password" required>
+        </div>
+
+        <p id="erro-login" class="erro" role="alert" hidden></p>
+
+        <button class="btn btn--primario" type="submit">Entrar</button>
+      </form>
+    </section>
+
+  </div>
+
+  <!-- ===================== TELA 2: PORTAL ===================== -->
+  <div id="tela-portal" class="portal" hidden>
+
+    <header class="cabecalho">
+      <div class="container cabecalho__interno">
+        <div class="cabecalho__marca">
+          <img data-logo alt="ADAPEC — Agência de Defesa Agropecuária do Tocantins">
+        </div>
+        <div class="cabecalho__acoes">
+          <span class="saudacao">Olá, <strong id="nome-usuario"></strong></span>
+          <button id="btn-sair" class="btn btn--secundario" type="button">Sair</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="banner">
+        <div class="container">
+          <span class="banner__barra" aria-hidden="true"></span>
+          <h1 id="titulo-portal" class="banner__titulo" tabindex="-1">Painéis de Dados</h1>
+          <p class="banner__apoio">Selecione um projeto para abrir o dashboard no Power BI.</p>
+        </div>
+      </section>
+
+      <div class="container conteudo">
+
+        <div class="busca">
+          <label for="busca" class="sr-only">Buscar projeto</label>
+          <span class="busca__icone" aria-hidden="true">🔎</span>
+          <input id="busca" type="search" placeholder="Buscar por nome ou descrição..."
+                 autocomplete="off" autocapitalize="none" spellcheck="false">
+        </div>
+
+        <p id="contador" class="contador" role="status"></p>
+
+        <ul id="grade" class="grade"></ul>
+
+        <p id="vazio" class="vazio" hidden>
+          Nenhum projeto encontrado. Tente outra palavra na busca.
+        </p>
+
+      </div>
+    </main>
+
+    <footer class="rodape">
+      <div class="container">
+        ADAPEC · Dados atualizados automaticamente a partir do Power BI
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
