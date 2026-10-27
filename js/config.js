@@ -64,10 +64,10 @@ const PROJETOS = [
   },
 
   {
-    icone: "📊",
-    nome: "Novo painel",
-    descricao: "Em breve.",
-    link: ""
+    icone: "🚧",
+    nome: "Barreiras Fixas",
+    descricao: "Dashboard das fiscalizações da área vegetal em Barreiras Fixas da ADAPEC.",
+    link: "https://app.powerbi.com/view?r=eyJrIjoiNmE2MTNhMGUtZmJjZi00ZTE4LTllMGUtOTEyYzU5MWE2NTBjIiwidCI6IjE3YjljN2I3LWRiMzAtNDk1ZS1iMzk3LTE4ZTM3YTMzODM0NSJ9"
   },
 
   {
