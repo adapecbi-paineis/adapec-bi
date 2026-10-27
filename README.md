@@ -276,3 +276,7 @@ Depois acesse <http://localhost:8000>.
   deixando de expor os endereços.
 - **Separação por setor** — mostrar para cada usuário apenas os painéis da
   sua diretoria.
+
+---
+
+Desenvolvido por **Gustavo J M Toledo** · 2026

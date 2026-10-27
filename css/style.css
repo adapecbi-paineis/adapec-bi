@@ -482,6 +482,15 @@ img { display: block; max-width: 100%; height: auto; }
   border-top: 1px solid var(--borda);
 }
 
+/* Assinatura discreta, menor e mais clara que a linha de cima. */
+.rodape__credito {
+  display: block;
+  margin-top: 7px;
+  font-size: 11.5px;
+  letter-spacing: .01em;
+  opacity: .7;
+}
+
 /* ========================= Responsivo ========================== */
 
 @media (max-width: 900px) {
