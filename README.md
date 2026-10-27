@@ -82,18 +82,47 @@ Pronto — esse é o link para compartilhar com a equipe.
 
 ### 3.1. Trocar a senha ou adicionar usuários
 
+As senhas ficam **embaralhadas** (hash SHA-256), para ninguém conseguir lê-las
+no arquivo:
+
 ```js
 const USUARIOS = [
-  { usuario: "adapec", senha: "troque-esta-senha" },
-  { usuario: "ddisv",  senha: "outra-senha" },     // nova pessoa/equipe
+  { usuario: "adapec",      hash: "021ff628cad003a4..." },
+  { usuario: "lidianalira", hash: "369aed2bee73b87c..." },
 ];
 ```
 
-Cada linha é um acesso. Para adicionar, copie uma linha e troque os valores.
-Para remover, apague a linha inteira. O nome de usuário não diferencia
-maiúsculas de minúsculas; a senha, sim.
+Cada linha é um acesso. Para **remover** alguém, apague a linha inteira — isso
+dá para fazer sozinho, sem ferramenta nenhuma.
 
-> **Troque a senha de exemplo antes de divulgar o site.**
+Para **criar um acesso** ou **trocar uma senha**, é preciso gerar o código
+embaralhado antes. Abra o Prompt de Comando e rode (trocando `USUARIO` e
+`SENHA`):
+
+```
+python -c "import hashlib;print(hashlib.sha256('adapec-paineis-2026:USUARIO:SENHA'.encode()).hexdigest())"
+```
+
+O `USUARIO` tem que ir em **minúsculas e sem acento**, igual ao que você vai
+escrever no `config.js`. Cole o resultado no campo `hash`.
+
+**Jeito simples, sem gerar hash:** dá para escrever a senha por extenso, que
+funciona do mesmo jeito —
+
+```js
+  { usuario: "fulano", senha: "senha-por-extenso" },
+```
+
+— mas aí ela fica legível para quem abrir o arquivo. Use só se precisar
+resolver algo na hora.
+
+O nome de usuário não diferencia maiúsculas de minúsculas nem acentos; a
+senha, sim.
+
+> **Importante:** não existe "esqueci minha senha". Se alguém esquecer, você
+> gera um hash novo e substitui a linha — a senha antiga não é recuperável a
+> partir do hash. E o usuário **não troca a própria senha**: quem troca é
+> quem edita este arquivo.
 
 ### 3.2. Adicionar ou editar painéis
 
@@ -168,13 +197,31 @@ no campo `link` do `config.js`.
 
 ### 5.1. O login é apenas visual
 
-A verificação de usuário e senha acontece no navegador, e as senhas ficam
-escritas em `js/config.js` — **qualquer pessoa que abra o código-fonte da
-página (ou o repositório no GitHub) consegue lê-las.**
+As senhas estão embaralhadas, então ninguém as lê no arquivo. Mas a
+verificação acontece **inteira no navegador**, e isso tem um limite que é
+importante entender:
 
-Isso serve para organizar o acesso e evitar que o portal seja usado por
-engano, mas **não é segurança de verdade**. Não trate essa tela como
-proteção de dado sigiloso.
+**O arquivo `js/config.js` é público.** Qualquer pessoa com o endereço do
+site pode abri-lo direto no navegador, sem login nenhum:
+
+```
+https://adapecbi-paineis.github.io/adapec-bi/js/config.js
+```
+
+Ele **precisa** ser público — é o navegador de quem acessa que faz a
+conferência da senha. Não há como escondê-lo, e deixar o repositório privado
+não mudaria isso.
+
+E dentro desse arquivo estão **os links dos dashboards**. Ou seja: quem
+abrir o arquivo copia o link e abre o painel direto, sem passar pelo login.
+
+> **O login é um porteiro, não uma fechadura.** Ele evita que alguém que caia
+> no site por acaso clique nos painéis. Não impede quem realmente queira
+> entrar. Publique nos painéis apenas o que pode ser visto por qualquer um.
+
+O hash protege contra um risco diferente: se a pessoa usa a mesma senha em
+outro sistema, ninguém consegue descobri-la aqui. Por isso vale a pena —
+mesmo não protegendo os painéis.
 
 ### 5.2. Os links "Publicar na web" são públicos
 

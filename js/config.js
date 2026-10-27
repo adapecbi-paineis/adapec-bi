@@ -29,13 +29,24 @@ const LOGO = "assets/logo-adapec.jpeg";
 /* -------------------------------------------------------------
    2) USUARIOS
    Cada linha é uma pessoa (ou equipe) que pode entrar.
-   Formato:  { usuario: "nome-de-login", senha: "senha" },
 
-   Para adicionar alguém, copie a linha de exemplo e troque os
-   valores. Para remover, apague a linha inteira.
+   As senhas abaixo estão embaralhadas (hash): ninguém consegue
+   lê-las neste arquivo. O código embaralhado não dá para digitar
+   à mão — para criar um acesso novo ou trocar uma senha, peça o
+   código pronto a quem cuida do site.
+
+   Formato com hash (o usado aqui):
+     { usuario: "nome-de-login", hash: "codigo-embaralhado" },
+
+   Formato simples, se precisar resolver sozinho na hora:
+     { usuario: "nome-de-login", senha: "senha-por-extenso" },
+     Funciona igual, mas a senha fica legível para quem procurar.
+
+   Para remover um acesso, apague a linha inteira.
    ------------------------------------------------------------- */
 const USUARIOS = [
-  { usuario: "adapec", senha: "Adapec123@" },
+  { usuario: "adapec",      hash: "021ff628cad003a47a586b875c5af4d655add28646c1e00dde74abad57f7992f" },
+  { usuario: "lidianalira", hash: "369aed2bee73b87ca9993baa84487743e19b63201798155883922d8ffa9fe282" },
 ];
 
 
