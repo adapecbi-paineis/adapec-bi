@@ -82,10 +82,10 @@ const PROJETOS = [
   },
 
   {
-    icone: "📊",
-    nome: "Novo painel",
-    descricao: "Em breve.",
-    link: ""
+    icone: "🎯",
+    nome: "Metas DDISV",
+    descricao: "Metas por gerência e programas da DDISV.",
+    link: "https://app.powerbi.com/view?r=eyJrIjoiMTFhZjZlNTQtZDk2MC00M2I3LWE5YTItNzE2NDQ5NjAwMTEyIiwidCI6IjE3YjljN2I3LWRiMzAtNDk1ZS1iMzk3LTE4ZTM3YTMzODM0NSJ9"
   },
 
 ];
